@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <!-- definition of main schema -->
+  <xs:element name="site">
+    <xs:complexType>
+      <xs:sequence>
+        
+        <xs:element name="source">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element ref="website"/>
+              <xs:element name="phone" type="xs:string"/>
+              <xs:element ref="email"/>
+              <xs:element name="reporting_system" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="product">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="issue_time" type="xs:dateTime"/>
+              <xs:element name="start_time" type="xs:dateTime"/>
+              <xs:element name="end_time" type="xs:dateTime"/>
+              <xs:element ref="website"/>
+              <xs:element name="contact">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="role" type="xs:string"/>
+                    <xs:element name="contact_info" type="xs:string"/>
+                    <xs:element name="phone" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="station">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="description" type="xs:string"/>
+              <xs:element name="address" type="xs:string"/>
+              <xs:element name="river_name" type="xs:string"/>
+              <xs:element name="street_name" type="xs:string"/>
+              <xs:element name="drinage_area">
+                <xs:complexType>
+                  <xs:attribute name="value" type ="xs:float"/>
+                  <xs:attribute name="unit" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="foreign_id">
+                <xs:complexType>
+                  <xs:attribute name="id" type ="xs:string"/>
+                  <xs:attribute name="organization" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="location">
+                <xs:complexType>
+                  <xs:attribute name="lat" type ="xs:float"/>
+                  <xs:attribute name="lng" type ="xs:float"/>
+                  <xs:attribute name="hdatum" type ="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="flood_level">
+                <xs:complexType>
+                  <xs:attribute name="value" type ="xs:float"/>
+                  <xs:attribute name="unit" type ="xs:string"/>
+                  <xs:attribute name="level" type ="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="elevation">
+                <xs:complexType>
+                  <xs:attribute name="value" type ="xs:float"/>
+                  <xs:attribute name="unit" type ="xs:string"/>
+                  <xs:attribute name="vdatum" type ="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="rating_curve">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="units">
+                      <xs:complexType>
+                        <xs:attribute name="stage" type ="xs:string"/>
+                        <xs:attribute name="flow" type ="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="values">
+                      <xs:complexType>
+                        <xs:attribute name="stage" type ="xs:float"/>
+                        <xs:attribute name="flow" type ="xs:float"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="website"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datasets">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="model">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="version" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                    <xs:element ref="website"/>
+                    <xs:element name="contact_info" type="xs:string"/>
+                    <xs:element name="parameters" type="xs:string"/>
+                    <xs:element name="forcings" type="xs:string"/>
+                    <xs:element name="time_resolution" type="xs:string"/>
+                    <xs:element name="spatial_resolution" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="type"/>
+              <xs:element name="unit"/>
+              <xs:element name="data">
+                <xs:complexType>
+                  <xs:attribute name="time" type ="xs:dateTime"/>
+                  <xs:attribute name="value" type ="xs:float"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        
+				<xs:element name="alert">
+					<xs:complexType>
+						<xs:sequence>
+						<xs:element name="title" type="xs:string" />
+						<xs:element name="type">
+							<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Coastal Flood Watch"/>
+								<xs:enumeration value="Coastal Flood Warning"/>
+								<xs:enumeration value="Coastal Flood Advisory"/>
+								<xs:enumeration value="Flash Flood Watch"/>
+								<xs:enumeration value="Flash Flood Warning"/>
+								<xs:enumeration value="Flood Watch"/>
+								<xs:enumeration value="Flood Warning"/>
+								<xs:enumeration value="River Flood Watch"/>
+								<xs:enumeration value="River Flood Warning"/>
+							</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="urgency_level">
+							<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Immediate"/>
+								<xs:enumeration value="Expected"/>
+								<xs:enumeration value="Future"/>
+								<xs:enumeration value="Past"/>
+								<xs:enumeration value="Unknown"/>
+							</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="severity_level">
+							<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Extreme"/>
+								<xs:enumeration value="Severe"/>
+								<xs:enumeration value="Moderate"/>
+								<xs:enumeration value="Minor"/>
+								<xs:enumeration value="Unknown"/>
+							</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="certainty_level">
+							<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Observed"/>
+								<xs:enumeration value="Likely"/>
+								<xs:enumeration value="Possible"/>
+								<xs:enumeration value="Unlikely"/>
+								<xs:enumeration value="Unknown"/>
+							</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="scope">
+							<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Public"/>
+								<xs:enumeration value="Restricted"/>
+								<xs:enumeration value="Internal"/>
+							</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="effective_time" type="xs:dateTime" />
+						<xs:element name="expire_time" type="xs:dateTime" />
+						<xs:element name="description" type="xs:string" />
+						<xs:element name="instruction" type="xs:string" />
+						<xs:element name="detail" type="xs:anyURI"/>
+						<xs:element name="affected_area" type="xs:string"/>
+						<xs:element name="affected_geocode">
+						  <xs:complexType>
+							<xs:attribute name="type" type ="xs:string"/>
+							<xs:attribute name="value" type ="xs:string"/>
+						  </xs:complexType>
+						</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					</xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+
+  <!-- definition of simple elements -->
+  <xs:element name="website" type="xs:anyURI"/>
+
+  <!-- definition of complex elements -->
+  <xs:element name="email">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+</xs:schema>
