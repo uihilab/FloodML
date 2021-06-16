@@ -17,8 +17,8 @@ FloodML can be visualized directly through mobile application, which is more eff
 ![vis2](/use_cases/use_case_4_multiple_forecasts/vis_multiple_forecasts.jpg)
 
 ## Citation
-If you use the specification or flood event inventory please cite the following publication:
-Zhongrun Xiang, Ibrahim Demir. (2020). Flood Markup Language – A Standards-based Exchange Language for Flood Risk Communication. TBD.
+If you use the specification or the FloodML format, please cite the following publication:
+Flood Markup Language – A Standards-based Exchange Language for Flood Risk Communication. EarthArXiv. DOI: 10.31223/X50S4V
 
 ## Feedback
 Feedbacks are always welcomed to improve this new markup language.
