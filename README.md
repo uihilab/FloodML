@@ -18,7 +18,8 @@ FloodML can be visualized directly through mobile application, which is more eff
 
 ## Citation
 If you use the specification or the FloodML format, please cite the following publication:
-Flood Markup Language – A Standards-based Exchange Language for Flood Risk Communication. EarthArXiv. DOI: 10.31223/X50S4V
+
+Flood Markup Language – A Standards-based Exchange Language for Flood Risk Communication. EarthArXiv. DOI: https://doi.org/10.31223/X50S4V
 
 ## Feedback
 Feedbacks are always welcomed to improve this new markup language.
